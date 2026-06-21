@@ -3,8 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import ImageGalleryModal from "@/components/ui/ImageGalleryModal";
 
 const projects = [
+  
    {
     title: "Shop App",
     subtitle: "Beauty and Cosmetics E-commerce",
@@ -15,6 +17,9 @@ const projects = [
       "/images/shop_app1.png",
       "/images/shop_app2.png",
       "/images/shop_app3.png",
+      "/images/shop_app4.png",
+      "/images/shop_app5.png",
+      "/images/shop_app6.png",
     ],
     links: [
       // {
@@ -23,6 +28,29 @@ const projects = [
       // },
     ],
     githubUrl: "https://github.com/Shabanshaikhramajn/store_app_flutter.git",
+    accent: "#3b82f6",
+    accentMuted: "rgba(59,130,246,0.12)",
+  },
+       {
+    title: "AI - Suggestions App",
+    subtitle: "AI based suggestions app for all kind of hot topics",
+    description:
+  "An AI-powered chat application that delivers real-time conversations and intelligent suggestions on trending and hot topics. Leveraging advanced AI models, the app provides context-aware responses, personalized recommendations",
+    technologies: ["Flutter", "Dart", "Firebase", "REST API", "Bloc", "Gemini"],
+    images: [
+      "/images/sugg_1.png",
+      "/images/sugg_2.png",
+      "/images/sugg_3.png",
+      "/images/sugg_4.png",
+      "/images/sugg_5.png",
+    ],
+    links: [
+      // {
+      //   label: "Play Store",
+      //   url: "https://play.google.com/store/apps/details?id=com.org.KoboTrade&hl=en_IN",
+      // },
+    ],
+    githubUrl: "https://github.com/Shabanshaikhramajn/AI_suggestions_app.git",
     accent: "#3b82f6",
     accentMuted: "rgba(59,130,246,0.12)",
   },
@@ -42,6 +70,10 @@ const projects = [
         label: "Play Store",
         url: "https://play.google.com/store/apps/details?id=com.org.KoboTrade&hl=en_IN",
       },
+       {
+        label: "App Store",
+        url: "https://apps.apple.com/us/app/kobotrade/id6448278099",
+      },
     ],
     githubUrl: null,
     accent: "#3b82f6",
@@ -51,12 +83,14 @@ const projects = [
     title: "Ecommerce App",
     subtitle: "Clothing shopping app for children and womens",
     description:
-      "Ecommerce ",
+  "A feature-rich fashion e-commerce app for men, women, and children. Includes secure authentication, product catalog browsing, ratings & reviews, cart management, wishlist functionality, and a user-friendly shopping experience powered by Flutter and Firebase.",
     technologies: ["Flutter", "Dart", "Firebase", "REST API", "Provider"],
     images: [
       "/images/ecom_1.png",
       "/images/ecom_2.png",
       "/images/ecom_3.png",
+      "/images/ecom_4.png",
+      "/images/ecom_5.png",
     ],
     links: [
       // {
@@ -65,29 +99,35 @@ const projects = [
       // },
     ],
     githubUrl: "https://github.com/Shabanshaikhramajn/Ecommerce_Flutter.git",
-    accent: "#3b82f6",
-    accentMuted: "rgba(59,130,246,0.12)",
+    accent: "#f9a8d4",
+accentMuted: "rgba(249,168,212,0.12)",
   },
   {
-    title: "Alpha & Omega",
-    subtitle: "International Payments · UK → Global",
-    description:
-      "UK-to-global payment application supporting card payments and bank transfers. Integrated multiple payment gateways with Didit KYC verification and compliance workflows.",
-    technologies: ["Flutter", "Dart", "BLoC", "API Integration"],
+    title: "Online Groceries Shopping",
+    subtitle: "Online Groceries ordering",
+   description:
+  "An end-to-end online grocery shopping platform developed using Swift for iOS and Node.js for backend services. The app enables users to browse products, manage carts, place orders, and track order status in real time.",
+    technologies: ["Swift", "SwiftUI", "XCode", "Node.Js"],
     images: [
-      "/images/omega_dashboard.jpeg",
-      "/images/omega_sendmoney.jpeg",
-      "/images/omega_history.jpeg",
+      "/images/online_1.png",
+       "/images/online_2.png",
+        "/images/online_3.png",
+         "/images/online_4.png",
+          "/images/online_5.png",
+           "/images/online_6.png",
+            "/images/online_7.png",
+              "/images/online_8.png",
+               "/images/online_9.png",
     ],
     links: [
-      {
-        label: "Play Store",
-        url: "https://play.google.com/store/apps/details?id=com.app.eghczqwwknkvlouzpdcrfihlasbajenuymtvosqjbxgyf&hl=en_IN",
-      },
+      // {
+      //   label: "Play Store",
+      //   url: "https://play.google.com/store/apps/details?id=com.app.eghczqwwknkvlouzpdcrfihlasbajenuymtvosqjbxgyf&hl=en_IN",
+      // },
     ],
-    githubUrl: null,
-    accent: "#06b6d4",
-    accentMuted: "rgba(6,182,212,0.12)",
+    githubUrl: "https://github.com/Shabanshaikhramajn/OnlineGroceries_Swift.git",
+    accent: "#22c55e",
+accentMuted: "rgba(34,197,94,0.12)",
   },
   {
     title: "SomRemit",
@@ -101,14 +141,27 @@ const projects = [
       "/images/som_benefi.jpeg"
   
     ],
-    links: [],
+    links: [
+       {
+        label: "Play Store",
+        url: "https://play.google.com/store/apps/details?id=com.org.Somremit&hl=en_IN",
+      },
+       {
+        label: "App Store",
+        url: "https://apps.apple.com/us/app/somremit/id6677023765",
+      },
+    ],
     githubUrl: null,
-    accent: "#8b5cf6",
+    aaccent: "#3b82f6",
     accentMuted: "rgba(139,92,246,0.12)",
   },
 ];
 
-const ImageFan = ({ images, accent }) => {
+const ImageFan = ({
+  images,
+  accent,
+  openGallery,
+}) => {
   const [active, setActive] = useState(0);
 
   const offsets = [
@@ -129,7 +182,7 @@ const ImageFan = ({ images, accent }) => {
         paddingBottom: 16,
       }}
     >
-      {images.map((src, i) => {
+      {images.slice(0, 3).map((src, i) => {
         const o = offsets[i] || offsets[offsets.length - 1];
         const isActive = i === active;
         return (
@@ -144,7 +197,10 @@ const ImageFan = ({ images, accent }) => {
       setActive((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }
   }}
-  onClick={() => setActive(i)}
+onClick={() => {
+  setActive(i);
+  openGallery(images, i);
+}}
   animate={{
     rotate: isActive ? 0 : o.rotate,
     x: isActive ? 0 : o.x,
@@ -159,10 +215,17 @@ const ImageFan = ({ images, accent }) => {
   }}
 >
             <img
-              src={src}
-              alt={`screenshot ${i + 1}`}
-              style={{ height: "100%", width: "auto", display: "block", objectFit: "cover" }}
-            />
+  src={src}
+  alt={`screenshot ${i + 1}`}
+  style={{
+    height: "100%",
+    width: "auto",
+    display: "block",
+    objectFit: "cover",
+    borderRadius: "10px", // rounded corners
+    boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+  }}
+/>
           </motion.div>
         );
       })}
@@ -198,7 +261,11 @@ const ImageFan = ({ images, accent }) => {
   );
 };
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({
+  project,
+  index,
+  openGallery,
+}) => {
   const { toast } = useToast();
 
   const handleLink = (url) => {
@@ -248,7 +315,11 @@ const ProjectCard = ({ project, index }) => {
          padding: "20px 24px 20px",
         }}
       >
-        <ImageFan images={project.images} accent={project.accent} />
+       <ImageFan
+  images={project.images}
+  accent={project.accent}
+  openGallery={openGallery}
+/>
       </div>
 
       {/* divider */}
@@ -385,10 +456,14 @@ const ProjectCard = ({ project, index }) => {
 };
 
 const Projects = () => {
+  
+const [galleryOpen, setGalleryOpen] = useState(false);
+const [galleryImages, setGalleryImages] = useState([]);
+const [selectedImage, setSelectedImage] = useState(0);
   return (
     <section
       id="projects"
-      style={{ padding: "80px 16px" }}
+      style={{ padding: "20px 16px 50px" }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         {/* header */}
@@ -445,10 +520,28 @@ const Projects = () => {
           }}
         >
           {projects.map((project, i) => (
-            <ProjectCard key={i} project={project} index={i} />
+            <ProjectCard
+  key={i}
+  project={project}
+  index={i}
+  openGallery={(images, index) => {
+    setGalleryImages(images);
+    setSelectedImage(index);
+    setGalleryOpen(true);
+  }}
+/>
           ))}
         </div>
       </div>
+      {galleryOpen && galleryImages.length > 0 && (
+  <ImageGalleryModal
+    isOpen={galleryOpen}
+    images={galleryImages}
+    currentIndex={selectedImage}
+    setCurrentIndex={setSelectedImage}
+    onClose={() => setGalleryOpen(false)}
+  />
+)}
     </section>
   );
 };

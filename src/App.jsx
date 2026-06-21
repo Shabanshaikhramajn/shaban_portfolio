@@ -22,10 +22,10 @@ function App() {
         <Header />
         <main>
           <Hero />
+           <Projects />
           <About />
           <Skills />
           <Experience />
-          <Projects />
           <Contact />
         </main>
         <Footer />

@@ -513,7 +513,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center px-4 sm:px-6 md:px-16 lg:px-24 pt-20 md:pt-24 lg:pt-28
+      className="min-h-[80vh] flex items-center px-4 sm:px-6 md:px-16 lg:px-24 pt-20 md:pt-24 lg:pt-28
       bg-gradient-to-r from-white via-gray-100 to-white
       dark:from-black dark:via-slate-900 dark:to-black transition-colors"
     >

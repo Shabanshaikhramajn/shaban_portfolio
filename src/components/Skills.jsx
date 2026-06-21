@@ -140,45 +140,56 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const Skills = () => {
-  const skills = [
-    {
-      name: "Flutter",
-      level: 92,
-      icon: "📱",
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      name: "Dart",
-      level: 90,
-      icon: "🎯",
-      color: "from-sky-500 to-blue-500",
-    },
-    {
-      name: "Firebase",
-      level: 88,
-      icon: "🔥",
-      color: "from-orange-500 to-yellow-500",
-    },
-    {
-      name: "State Management (Bloc, Provider, GetX)",
-      level: 90,
-      icon: "🧠",
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      name: "RESTful APIs integrations",
-      level: 85,
-      icon: "🔗",
-      color: "from-emerald-500 to-green-500",
-    },
-    {
-  name: "Git / Bitbucket / CI/CD",
-  level: 88,
-  icon: "🐙",
-  color: "from-emerald-400 via-green-500 to-emerald-600",
-},
-
-  ];
+const skills = [
+  {
+    name: "Flutter",
+    level: 92,
+    icon: "📱",
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    name: "Dart",
+    level: 90,
+    icon: "🎯",
+    color: "from-sky-500 to-blue-500",
+  },
+  {
+    name: "Firebase",
+    level: 88,
+    icon: "🔥",
+    color: "from-orange-500 to-yellow-500",
+  },
+  {
+    name: "State Management (Bloc, Provider, GetX)",
+    level: 90,
+    icon: "🧠",
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    name: "RESTful APIs Integrations",
+    level: 85,
+    icon: "🔗",
+    color: "from-emerald-500 to-green-500",
+  },
+  {
+    name: "Android (Kotlin & Java)",
+    level: 80,
+    icon: "🤖",
+    color: "from-green-500 to-lime-500",
+  },
+  {
+    name: "iOS (Swift, SwiftUI, Xcode)",
+    level: 78,
+    icon: "🍎",
+    color: "from-gray-500 to-slate-700",
+  },
+  {
+    name: "Git / Bitbucket / CI/CD",
+    level: 88,
+    icon: "🐙",
+    color: "from-emerald-400 via-green-500 to-emerald-600",
+  },
+];
 
   const additionalSkills = [
     "Android Studio",
