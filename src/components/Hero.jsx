@@ -510,92 +510,142 @@ const Hero = () => {
     });
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section
       id="hero"
       className="min-h-[80vh] flex items-center px-4 sm:px-6 md:px-16 lg:px-24 pt-20 md:pt-24 lg:pt-28
-      bg-gradient-to-r from-white via-gray-100 to-white
-      dark:from-black dark:via-slate-900 dark:to-black transition-colors"
+      bg-transparent transition-colors"
     >
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+      >
 
         {/* LEFT CONTENT */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center lg:text-left"
-        >
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold mb-4 text-gray-900 dark:text-slate-200">
+        <div className="text-center lg:text-left">
+          <motion.h1
+            variants={itemVariants}
+            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold mb-4 text-gray-900 dark:text-slate-200"
+          >
             Hey, I'm <span className="text-orange-400">Shaban shaikh</span>
-          </h1>
+          </motion.h1>
 
-          <h2 className="text-base sm:text-lg md:text-xl uppercase tracking-wide text-gray-700 dark:text-slate-400 mb-6">
+          <motion.h2
+            variants={itemVariants}
+            className="text-base sm:text-lg md:text-xl uppercase tracking-wide text-gray-700 dark:text-slate-400 mb-6"
+          >
             Flutter Developer
-          </h2>
+          </motion.h2>
 
-          <div className="w-20 h-[2px] bg-orange-400 mb-6 mx-auto lg:mx-0" />
+          <motion.div
+            variants={itemVariants}
+            className="w-20 h-[2px] bg-orange-400 mb-6 mx-auto lg:mx-0"
+          />
 
-          <p className="text-gray-700 dark:text-slate-300 max-w-md mb-4 leading-relaxed mx-auto lg:mx-0">
-  I specialize in building high-performance, scalable, and visually engaging 
-  mobile & web applications using <b>Flutter</b>, with expertise in modern 
-  state management solutions like <b>BLoC</b>, <b>Provider</b>, and <b>Riverpod</b>.
-</p>
+          <motion.p
+            variants={itemVariants}
+            className="text-gray-700 dark:text-slate-300 max-w-md mb-4 leading-relaxed mx-auto lg:mx-0"
+          >
+            I specialize in building high-performance, scalable, and visually engaging
+            mobile & web applications using <b>Flutter</b>, with expertise in modern
+            state management solutions like <b>BLoC</b>, <b>Provider</b>, and <b>Riverpod</b>.
+          </motion.p>
 
-<p className="text-gray-700 dark:text-slate-300 max-w-md mb-6 leading-relaxed mx-auto lg:mx-0">
-  Experienced in developing fintech and business applications with clean 
-  architecture, smooth UI animations, responsive layouts, REST API integration, 
-  and seamless user experiences. Successfully deployed and maintained 
-  <b>15+ production-ready applications</b> across the Google Play Store and 
-  Apple App Store.
-</p>
+          <motion.p
+            variants={itemVariants}
+            className="text-gray-700 dark:text-slate-300 max-w-md mb-6 leading-relaxed mx-auto lg:mx-0"
+          >
+            Experienced in developing fintech and business applications with clean
+            architecture, smooth UI animations, responsive layouts, REST API integration,
+            and seamless user experiences.
+          </motion.p>
 
           {/* BUTTONS */}
-          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-6">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-6"
+          >
             <Button
               onClick={handleDownloadResume}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full flex items-center"
+              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full flex items-center transform transition-transform hover:scale-105"
             >
               <Download className="mr-2" /> Resume
             </Button>
 
             <Button
               onClick={handleLinkedIn}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full flex items-center"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full flex items-center transform transition-transform hover:scale-105"
             >
               <Linkedin className="mr-2" /> LinkedIn
             </Button>
 
             <Button
               onClick={handleContact}
-              className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-full flex items-center"
+              className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-full flex items-center transform transition-transform hover:scale-105"
             >
               <Mail className="mr-2" /> Contact
             </Button>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* RIGHT IMAGE */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            y: [0, -20, 0]
+          }}
+          transition={{
+            opacity: { duration: 0.8 },
+            scale: { duration: 0.8 },
+            y: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          }}
           className="flex justify-center lg:justify-end mt-10 lg:mt-0"
         >
           <div
             className="relative w-48 sm:w-60 md:w-72 lg:w-96
             h-64 sm:h-80 md:h-96 lg:h-[420px]
-            rounded-3xl bg-white dark:bg-gray-800 p-3 shadow-2xl"
+            rounded-3xl bg-white dark:bg-gray-800 p-3 shadow-2xl overflow-hidden group"
           >
+            <div className="absolute inset-0 bg-gradient-to-tr from-orange-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <img
               src={akashPhoto}
               alt="Shaban shaikh"
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110"
             />
           </div>
         </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };

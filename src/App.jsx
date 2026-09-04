@@ -10,6 +10,8 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProviderWrapper } from '@/components/ThemeProvider';
+import AnimatedBackground from '@/components/ui/AnimatedBackground';
+import ScrollToTop from '@/components/ui/ScrollToTop';
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <meta name="description" content="Professional portfolio of Shaban shaikh, a Flutter developer with 1 year experience at Asecnsify Technology Kolhapur. Specialized in Flutter web and app development, Firebase, and Cloudinary." />
       </Helmet> 
       <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+        <AnimatedBackground />
         <Header />
         <main>
           <Hero />
@@ -30,6 +33,7 @@ function App() {
         </main>
         <Footer />
         <Toaster />
+        <ScrollToTop />
       </div>
     </ThemeProviderWrapper>
   );

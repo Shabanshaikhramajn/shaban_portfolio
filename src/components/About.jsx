@@ -237,16 +237,27 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-slate-800/50 backdrop-blur-sm p-6 lg:p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-all duration-300 shadow-lg hover:shadow-blue-500/20"
+              whileHover={{
+                scale: 1.05,
+                y: -10,
+                backgroundColor: "rgba(30, 41, 59, 0.8)",
+                borderColor: "rgba(59, 130, 246, 0.5)"
+              }}
+              className="bg-slate-800/50 backdrop-blur-sm p-6 lg:p-8 rounded-xl border border-slate-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/20 group"
             >
-              <div className="text-blue-400 mb-4">{feature.icon}</div>
+              <motion.div
+                className="text-blue-400 mb-4"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.5 }}
+              >
+                {feature.icon}
+              </motion.div>
 
-              <h3 className="text-lg lg:text-xl font-semibold mb-3 text-white">
+              <h3 className="text-lg lg:text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors">
                 {feature.title}
               </h3>
 
-              <p className="text-sm lg:text-base text-slate-400">
+              <p className="text-sm lg:text-base text-slate-400 group-hover:text-slate-300 transition-colors">
                 {feature.description}
               </p>
             </motion.div>

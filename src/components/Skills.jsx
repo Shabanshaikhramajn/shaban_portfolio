@@ -233,29 +233,53 @@ const skills = [
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-slate-800/60 backdrop-blur-sm p-6 lg:p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition shadow-lg hover:shadow-blue-500/20"
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="bg-slate-800/60 backdrop-blur-sm p-6 lg:p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition shadow-lg hover:shadow-blue-500/20 group"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-3xl">{skill.icon}</span>
-                  <h3 className="text-lg lg:text-xl font-semibold text-white">
+                  <motion.span
+                    className="text-3xl"
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                  >
+                    {skill.icon}
+                  </motion.span>
+                  <h3 className="text-lg lg:text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
                     {skill.name}
                   </h3>
                 </div>
-                <span className="text-lg font-bold text-blue-400">
+                <motion.span
+                  className="text-lg font-bold text-blue-400"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
                   {skill.level}%
-                </span>
+                </motion.span>
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden">
+              <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden p-[2px]">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1 }}
-                  className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
-                />
+                  transition={{ duration: 1.5, ease: "easeOut" }}
+                  className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative`}
+                >
+                  <motion.div
+                    animate={{
+                      x: ["0%", "100%"],
+                      opacity: [0, 1, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute top-0 left-0 w-20 h-full bg-white/20 skew-x-[-20deg]"
+                  />
+                </motion.div>
               </div>
             </motion.div>
           ))}
